@@ -13,9 +13,11 @@
 @implementation HWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	HWMainVC *vc = [HWMainVC new];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 	self.window.rootViewController = [[HWMainVC alloc] initWithNibName:@"HWMainVC" bundle:nil];
+    self.navCntrl = [[UINavigationController alloc] initWithRootViewController:vc];
 	
 	[self.window makeKeyAndVisible];
 	return YES;

@@ -14,7 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UIButton *exitButton;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigation;
+
 
 @end
 
@@ -23,6 +24,7 @@
 - (void)updateString {
 	_string = self.textField.text;
 	self.label.text = _string;
+    self.navigation.title = _string;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
