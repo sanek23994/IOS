@@ -14,9 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigation;
 
-
+- (IBAction)buttonEvent:(id)sender;
 @end
 
 @implementation HWMainVC
@@ -24,7 +23,6 @@
 - (void)updateString {
 	_string = self.textField.text;
 	self.label.text = _string;
-    self.navigation.title = _string;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -43,4 +41,20 @@
 	[super touchesBegan:touches withEvent:event];
 }
 
+- (IBAction)buttonEvent:(id)sender {
+    NSString *mainStr = self.textField.text;
+    unsigned len = mainStr.length;
+    unichar *tmpChars = (unichar *)malloc(len * sizeof(unichar));
+    [mainStr getCharacters:tmpChars range:NSMakeRange(0, len)];
+    unichar tmp;
+    for (unsigned i = 0; i < len / 2; i++) {
+        tmp = tmpChars[i];
+        tmpChars[i] = tmpChars[len - i - 1];
+        tmpChars[len - i - 1] = tmp;
+    }
+    _string = [[NSString alloc] initWithCharacters:tmpChars length:len];
+    self.label.text = _string;
+    self.textField.text = _string;
+    free(tmpChars);
+}
 @end

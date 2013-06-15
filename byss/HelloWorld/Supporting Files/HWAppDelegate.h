@@ -11,6 +11,5 @@
 @interface HWAppDelegate: UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UINavigationController *navCntrl;
 
 @end
